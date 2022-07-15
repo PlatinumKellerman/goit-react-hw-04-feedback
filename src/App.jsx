@@ -16,13 +16,13 @@ export const App = () => {
     const { name } = e.target;
     switch (name) {
       case 'good':
-        setGoodFeedback(good + 1);
+        setGoodFeedback(prevGood => prevGood + 1);
         break;
       case 'neutral':
-        setNeutralFeedback(neutral + 1);
+        setNeutralFeedback(prevNeutral => prevNeutral + 1);
         break;
       case 'bad':
-        setBadFeedback(bad + 1);
+        setBadFeedback(prevBad => prevBad + 1);
         break;
       default:
         return;
