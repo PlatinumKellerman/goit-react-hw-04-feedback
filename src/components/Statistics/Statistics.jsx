@@ -12,12 +12,11 @@ import {
 } from './Statistics.styled';
 
 export function Statistics({
-  state,
-  countTotalFeedback,
-  countPositiveFeedbackPercentage,
+  feedbackValues,
+  totalFeedbacks,
+  countPositivePercentage,
 }) {
-  const { good, neutral, bad } = state;
-  const total = countTotalFeedback;
+  const { good, neutral, bad } = feedbackValues;
   return (
     <Container>
       <StatisticsTitle>Statistics:</StatisticsTitle>
@@ -35,16 +34,16 @@ export function Statistics({
       </Text>
       <Text>
         <TextKey>Total:</TextKey>
-        <TextValueTotal>{total}</TextValueTotal>
+        <TextValueTotal>{totalFeedbacks}</TextValueTotal>
       </Text>
       <Text>
         <TextKey>Positive feedback:</TextKey>
         <Percentage
           style={{
-            color: countPositiveFeedbackPercentage > 49 ? 'limegreen' : 'red',
+            color: countPositivePercentage > 49 ? 'limegreen' : 'red',
           }}
         >
-          {countPositiveFeedbackPercentage}%
+          {countPositivePercentage}%
         </Percentage>
       </Text>
     </Container>
@@ -52,7 +51,7 @@ export function Statistics({
 }
 
 Statistics.propTypes = {
-  state: PropTypes.object.isRequired,
-  countTotalFeedback: PropTypes.number.isRequired,
-  countPositiveFeedbackPercentage: PropTypes.number.isRequired,
+  feedbackValues: PropTypes.object.isRequired,
+  totalFeedbacks: PropTypes.number.isRequired,
+  countPositivePercentage: PropTypes.number.isRequired,
 };

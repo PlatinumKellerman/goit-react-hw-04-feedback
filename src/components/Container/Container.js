@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const FeedbackContainer = styled.div`
+export const Container = styled.div`
   display: block;
   width: auto;
   padding: 20px 20px;

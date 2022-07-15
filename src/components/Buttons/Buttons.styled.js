@@ -11,6 +11,8 @@ export const FeedbackButtons = styled.button`
   :hover,
   :focus,
   :active {
-    background-color: lime;
+    background-color: limegreen;
+    color: #fff;
+    font-weight: 600;
   }
 `;

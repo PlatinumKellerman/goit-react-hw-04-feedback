@@ -9,8 +9,8 @@ export const App = () => {
   const [good, setGoodFeedback] = useState(0);
   const [neutral, setNeutralFeedback] = useState(0);
   const [bad, setBadFeedback] = useState(0);
-
   const buttonNames = ['good', 'neutral', 'bad'];
+  const totalFeedbacks = good + neutral + bad;
 
   const handleFeddbackChange = e => {
     const { name } = e.target;
@@ -19,47 +19,36 @@ export const App = () => {
         setGoodFeedback(good + 1);
         break;
       case 'neutral':
-        setGoodFeedback(neutral + 1);
+        setNeutralFeedback(neutral + 1);
         break;
       case 'bad':
-        setGoodFeedback(bad + 1);
+        setBadFeedback(bad + 1);
         break;
       default:
         return;
     }
   };
 
-  console.log(good);
-  console.log(bad);
-  console.log(neutral);
-  // const handleGoodFeedbackChagne = e => {
-  //   const { name } = e.target;
-  // };
-
-  // const handleNeytralFeedbackChagne = e => {
-  //   const { name } = e.target;
-  // };
-
-  // const handleBadFeedbackChagne = e => {
-  //   const { name } = e.target;
-  // };
+  const countPositivePercentage = () => {
+    const positivePercentage = Math.round(
+      Number((good * 100) / totalFeedbacks)
+    );
+    return positivePercentage;
+  };
 
   return (
     <Container>
       <Feedback title="Please leave feedback" />
-      <Buttons
-        handleFeddbackChange={handleFeddbackChange}
-        stateKeys={buttonNames}
-      />
-      {/* {this.countTotalFeedback() > 0 ? (
+      <Buttons handleFeddbackChange={handleFeddbackChange} keys={buttonNames} />
+      {totalFeedbacks > 0 ? (
         <Statistics
-          state={this.state}
-          countTotalFeedback={this.countTotalFeedback()}
-          countPositiveFeedbackPercentage={this.countPositiveFeedbackPercentage()}
+          feedbackValues={{ good, neutral, bad }}
+          totalFeedbacks={totalFeedbacks}
+          countPositivePercentage={countPositivePercentage()}
         />
       ) : (
         <Notification title="There is no feedback" />
-      )} */}
+      )}
     </Container>
   );
 };

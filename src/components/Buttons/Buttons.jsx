@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import { FeedbackButtons } from './Buttons.styled';
 
-export function Buttons({ handleFeddbackChange, stateKeys }) {
-  return stateKeys.map(button => {
+export function Buttons({ handleFeddbackChange, keys }) {
+  return keys.map(button => {
     return (
       <FeedbackButtons
         key={button}
@@ -18,5 +18,5 @@ export function Buttons({ handleFeddbackChange, stateKeys }) {
 
 Buttons.propTypes = {
   handleFeddbackChange: PropTypes.func.isRequired,
-  stateKeys: PropTypes.arrayOf(PropTypes.string.isRequired),
+  keys: PropTypes.arrayOf(PropTypes.string.isRequired),
 };
